@@ -91,8 +91,10 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.10em;
-  color: var(--accent);
+  color: #9A7200;
   margin-bottom: 8px;
+  border-left: 3px solid var(--accent);
+  padding-left: 8px;
 }
 
 .section__eyebrow--accent { color: rgba(230, 184, 0, 0.9); }
@@ -571,7 +573,8 @@
 .service-card__icon {
   width: 52px;
   height: 52px;
-  background: rgba(230, 184, 0, 0.12);
+  background: rgba(230, 184, 0, 0.18);
+  border: 1px solid rgba(230, 184, 0, 0.35);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -721,7 +724,8 @@
 .diferencial-card__icon {
   width: 48px;
   height: 48px;
-  background: rgba(230, 184, 0, 0.15);
+  background: rgba(230, 184, 0, 0.2);
+  border: 1px solid rgba(230, 184, 0, 0.4);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
@@ -1229,3 +1233,162 @@
   white-space: nowrap;
   border-width: 0;
 }
+
+/* ==============================================
+   FAQ
+   ============================================== */
+.faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.faq-item__question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary);
+  cursor: pointer;
+  list-style: none;
+  gap: 12px;
+}
+
+.faq-item__question::-webkit-details-marker { display: none; }
+
+.faq-item__question::after {
+  content: '+';
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--accent);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.faq-item[open] .faq-item__question::after {
+  transform: rotate(45deg);
+}
+
+.faq-item__answer {
+  padding: 0 20px 18px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--gray-mid);
+}
+
+/* ==============================================
+   CARRUSEL ZONAS
+   ============================================== */
+.zonas-carousel {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4/3;
+  background: var(--gray-light);
+}
+.zonas-carousel__track {
+  display: flex;
+  height: 100%;
+  width: 400%;
+  transition: transform 0.5s ease;
+}
+.zonas-carousel__slide {
+  width: 25%;
+  position: relative;
+  flex-shrink: 0;
+}
+.zonas-carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.zonas-carousel__label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 16px;
+  background: rgba(0,31,63,0.7);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.zonas-carousel__dots {
+  position: absolute;
+  bottom: 40px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+}
+.zonas-carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.zonas-carousel__dot--active { background: var(--accent); }
+
+/* ==============================================
+   TICKER STRIPS
+   ============================================== */
+.ticker {
+  overflow: hidden;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+.ticker--dark  { background: var(--primary); }
+.ticker--accent { background: var(--accent); }
+
+.ticker__track {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker-scroll 28s linear infinite;
+}
+.ticker__track:hover { animation-play-state: paused; }
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 32px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.ticker--dark  .ticker__item { color: var(--white); }
+.ticker--accent .ticker__item { color: var(--primary); }
+
+.ticker__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ticker--dark  .ticker__dot { background: var(--accent); }
+.ticker--accent .ticker__dot { background: var(--primary); }
